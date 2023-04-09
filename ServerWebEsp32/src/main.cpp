@@ -67,13 +67,6 @@ void setup() {
   request->send(response);
   });
 
- // Route pour changer la couleur d'arrière plan de la page web 
-  server.on("/color", HTTP_GET, [](AsyncWebServerRequest *request){
-  String jsonResponse = "{\"color\":\"" + backgroundColor + "\"}";
-  AsyncWebServerResponse *response = request->beginResponse(200, "application/json", jsonResponse);
-  response->addHeader("Access-Control-Allow-Origin", "*"); 
-  request->send(response);
-});
 
 // Démarrage du serveur EleganOTA
   AsyncElegantOTA.begin(&server);    
