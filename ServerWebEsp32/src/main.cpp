@@ -2,9 +2,8 @@
   Titre      : Projet Final - réalisation d'une boussole à partir des données du capteur GY-521 et affichage web
   Auteur     : KOUBELAN RICHARD AKPAGNI
   Date       : 09/04/2023
-  Description: Ce code nous permet de faire une mise à jour de changer la couleur d'arrière plan de 
-               de notre page web grâce à OTA
-  Version    : 2.1.8
+  Description: Ce code nous permet de faire d'afficher sur une page web les angles inclinaisons et d'orientation
+  Version    : 2.1.7
 */
 
 // Insertion des librairies
@@ -31,7 +30,6 @@
   int inclinaison_y = 0;
   int inclinaison_z = 0;
   int orientation = 0;
-  
 
 
 void setup() {
@@ -66,7 +64,6 @@ void setup() {
   response->addHeader("Access-Control-Allow-Methods", "GET");
   request->send(response);
   });
-
 
 // Démarrage du serveur EleganOTA
   AsyncElegantOTA.begin(&server);    
