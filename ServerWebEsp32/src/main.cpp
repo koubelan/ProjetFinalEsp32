@@ -4,16 +4,19 @@
   Date       : 09/04/2023
   Description: Ce code nous permet de faire une mise à jour de changer la couleur d'arrière plan de 
                de notre page web grâce à OTA
-  Version    : 2.1.3
+  Version    : 2.1.8
 */
 
 // Insertion des librairies
 #include <Arduino.h>
 #include <Wire.h>                 // Librairie de communication I2C
 #include <MPU6050.h>             // Librairie du capteur GY-521
+#include <WiFi.h>               // Librairie pour se connecter à un point d'accès
 
 
-
+// Insertion des identifiants du Point d'accès
+  const char* ssid = "122dumaresq";
+  const char* password = "dumaresq";
 
 // Création d'un objet du capteur MPU-6050 à partir de la classe
   MPU6050 mpu;
@@ -38,9 +41,14 @@ void setup() {
   Wire.begin();
   mpu.initialize();
 
+// Connection au Point d'accès
+  WiFi.begin(ssid, password);
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(1000);
+    Serial.println("Connexion au réseau Wi-Fi...");
+  }
+  Serial.println("Connecté au réseau Wi-Fi");
 
- 
-}
 
 void loop() {
 
